@@ -14,12 +14,12 @@
 <script>
     
     window.mdc.autoInit();
-    db.settings.get("apiDomain").then(function(setting) {
-        console.log(setting);
+    db.settings.get("apiEndpoint").then(function(setting) {
         $("#endpointDomain").val(setting.value);
     });
     $("#saveDomain").off("click");
     $("#saveDomain").on("click", function(e) {
+        console.log(apiEndpoint,$('#endpointDomain'));
         db.settings.update("apiEndpoint", {"value": $("#endpointDomain").val()})  
     });
 
