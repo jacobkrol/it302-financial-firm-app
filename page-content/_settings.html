@@ -1,0 +1,26 @@
+
+<div class="mdc-text-field mdc-text-field--no-label mdc-text-field--fullwidth" data-mdc-auto-init="MDCTextField">
+  <input type="text" id="endpointDomain" class="mdc-text-field__input" placeholder="Enter your endpoint domain (e.g., https://my.apiEndpoint.com/)">
+
+  <div class="mdc-line-ripple"></div>
+</div>
+<button style="margin-top: 5px;" class="mdc-button mdc-button--raised" id="saveDomain">
+  <div class="mdc-button__ripple"></div>
+  <span class="mdc-button__label">Save</span>
+</button>
+
+
+
+<script>
+    
+    window.mdc.autoInit();
+    db.settings.get("apiDomain").then(function(setting) {
+        console.log(setting);
+        $("#endpointDomain").val(setting.value);
+    });
+    $("#saveDomain").off("click");
+    $("#saveDomain").on("click", function(e) {
+        db.settings.update("apiDomain", {"value": $("#endpointDomain").val()})  
+    });
+
+</script>

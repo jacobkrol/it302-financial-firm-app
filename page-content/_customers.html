@@ -1,0 +1,28 @@
+    <ul class="mdc-list demo-list mdc-list--two-line mdc-list--avatar-list" id="customers">
+    <li class="mdc-list-item mdc-ripple-upgraded template"><span class="mdc-list-item__text"><span class="mdc-list-item__primary-text"></span>
+    <span class="mdc-list-item__secondary-text"></span></li>
+  </ul> 
+
+
+<script>
+    var url = apiEndpoint + "customers";
+    var template = $("ul#customers li.template");
+    var ul = $("ul#customers");
+    console.log(url);
+    $.get(url, function(response) {
+        $.each(response, function(i,v) {
+            let clone = template.clone();
+            clone.find("mdc-list-item__primary-text").text(v.name);
+            clone.attr("data-id", v.id);
+            clone.removeClass("template");
+            ul.append(clone);
+        })     
+    });
+    
+    $("#customers li").off("click");
+    $("#customers li").on("click", function(e) {
+       let file = "/page-content/_customer.html?id=" + $(this).attr("data-id");
+       $("#content").load(file);   
+    });
+    
+</script>
