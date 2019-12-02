@@ -1,5 +1,5 @@
     <ul class="mdc-list demo-list mdc-list--two-line mdc-list--avatar-list" id="customers">
-    <li class="mdc-list-item mdc-ripple-upgraded template"><span class="mdc-list-item__text"><span class="mdc-list-item__primary-text"></span>
+    <li class="mdc-list-item mdc-ripple-upgraded template"><span class="mdc-list-item__primary-text"></span>
     <span class="mdc-list-item__secondary-text"></span></li>
   </ul> 
 
@@ -12,7 +12,7 @@
     $.get(url, function(response) {
         $.each(response, function(i,v) {
             let clone = template.clone();
-            clone.find("mdc-list-item__primary-text").text(v.name);
+            clone.find("mdc-list-item__primary-text").text(v.id + ": " + v.first_name + " " + v.last_name);
             clone.attr("data-id", v.id);
             clone.removeClass("template");
             ul.append(clone);
