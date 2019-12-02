@@ -20,7 +20,7 @@
     });
     $("#saveDomain").off("click");
     $("#saveDomain").on("click", function(e) {
-        db.settings.update("apiDomain", {"value": $("#endpointDomain").val()})  
+        db.settings.update("apiEndpoint", {"value": $("#endpointDomain").val()})  
     });
 
 </script>
